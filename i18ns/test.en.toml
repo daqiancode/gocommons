@@ -1,0 +1,8 @@
+
+hello = "Hello {{.Name}}"
+
+
+[UnreadEmails]
+description = "The number of unread emails a person has"
+one = "{{.Name}} has {{.Count}} unread email."
+other = "{{.Name}} has {{.Count}} unread emails."
