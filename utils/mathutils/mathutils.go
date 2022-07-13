@@ -21,7 +21,7 @@ func Min[T atoms.NumStr](a []T) T {
 	return m
 }
 
-func In[T atoms.NumStr](n T, ints []T) bool {
+func In[T atoms.Basic](n T, ints []T) bool {
 	for _, v := range ints {
 		if n == v {
 			return true
