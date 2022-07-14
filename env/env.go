@@ -13,10 +13,17 @@ import (
 
 func init() {
 	changeDir()
-	err := godotenv.Load()
+	err := godotenv.Load(getEnvFileName())
 	if err != nil {
 		log.Fatal("Error loading .env file", err)
 	}
+}
+
+func getEnvFileName() string {
+	if _env := os.Getenv("_env"); _env != "" {
+		return ".env_" + _env
+	}
+	return ".env"
 }
 
 func Getenv(key string, fallback ...string) string {
@@ -93,16 +100,17 @@ func Getwd() string {
 
 func changeDir() {
 	wd, _ := os.Getwd()
+	envFile := getEnvFileName()
 	for filepath.Dir(wd) != wd {
-		if Exists(filepath.Join(wd, ".env")) {
+		if Exists(filepath.Join(wd, envFile)) {
 			break
 		}
 		wd = filepath.Dir(wd)
 	}
-	if !Exists(filepath.Join(wd, ".env")) {
-		panic("Can not find .env file")
+	if !Exists(filepath.Join(wd, envFile)) {
+		panic("Can not find " + envFile + " file")
 	}
-	fmt.Println("Find .env file in " + wd)
+	fmt.Println("Find " + envFile + " file in " + wd)
 	os.Chdir(wd)
 
 }
