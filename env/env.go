@@ -20,8 +20,8 @@ func init() {
 }
 
 func getEnvFileName() string {
-	if _env := os.Getenv("_env"); _env != "" {
-		return ".env_" + _env
+	if envFile := os.Getenv("_env_file"); envFile != "" {
+		return envFile
 	}
 	return ".env"
 }
