@@ -16,11 +16,11 @@ type Photos struct {
 	PathMaker func(ext string) string
 }
 
-func NewPhotos(fs dfs.Dfs) (*Photos, error) {
+func NewPhotos(fs dfs.Dfs) *Photos {
 	return &Photos{
 		fs:        fs,
 		PathMaker: pathutils.MakeDateRandPath,
-	}, nil
+	}
 }
 
 type UploadPhotoResult struct {

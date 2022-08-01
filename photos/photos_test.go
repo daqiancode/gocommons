@@ -15,8 +15,7 @@ import (
 func TestPhotos(t *testing.T) {
 	fs, err := hwobs.NewOBS(env.GetenvMust("obs_access_token"), env.GetenvMust("obs_secret_token"), env.GetenvMust("obs_endpoint"), env.GetenvMust("obs_bucket"))
 	assert.Nil(t, err)
-	photos, err := photos.NewPhotos(fs)
-	assert.Nil(t, err)
+	photos := photos.NewPhotos(fs)
 	defer photos.Close()
 
 	file, err := os.OpenFile(filepath.Join(env.Getwd(), "test.jpg"), os.O_RDONLY, 0644)
