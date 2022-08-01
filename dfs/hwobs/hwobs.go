@@ -137,10 +137,19 @@ func (s *OBS) Delete(keys ...string) error {
 	if len(keys) == 0 {
 		return nil
 	}
+	var ks []string
+	for _, v := range keys {
+		if strings.TrimSpace(v) != "" {
+			ks = append(ks, v)
+		}
+	}
+	if len(ks) == 0 {
+		return nil
+	}
 	inp := &obs.DeleteObjectsInput{}
 	inp.Bucket = s.bucket
-	inp.Objects = make([]obs.ObjectToDelete, len(keys))
-	for i, key := range keys {
+	inp.Objects = make([]obs.ObjectToDelete, len(ks))
+	for i, key := range ks {
 		inp.Objects[i] = obs.ObjectToDelete{Key: key}
 	}
 	_, err := s.client.DeleteObjects(inp)

@@ -143,7 +143,7 @@ func (t *ImageTransform) Buffer() (*bytes.Buffer, error) {
 	return buff, nil
 }
 func (t *ImageTransform) Save(filePath string) error {
-	return imaging.Save(t.Im, filePath, imaging.PNGCompressionLevel(png.BestCompression), imaging.JPEGQuality(90))
+	return imaging.Save(t.Im, filePath, imaging.PNGCompressionLevel(png.BestCompression))
 }
 func (t *ImageTransform) Size() (int, int) {
 	return t.Im.Bounds().Dx(), t.Im.Bounds().Dy()
