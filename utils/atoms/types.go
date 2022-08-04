@@ -26,10 +26,15 @@ type IntUintFloat interface {
 type NumStr interface {
 	Int | Uint | String
 }
+
 type Atom interface {
 	~bool | Int | Uint | String
 }
 
 type Basic interface {
+	Atom | time.Time
+}
+
+type JSON interface {
 	Atom | time.Time
 }

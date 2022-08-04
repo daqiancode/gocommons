@@ -1,9 +1,9 @@
-package utils_test
+package stringutils_test
 
 import (
 	"testing"
 
-	"github.com/bitcrycode/product/core/common/utils"
+	utils "github.com/daqiancode/gocommons/utils/stringutils"
 	"github.com/stretchr/testify/assert"
 )
 
