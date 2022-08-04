@@ -16,3 +16,10 @@ type ServiceError struct {
 func (s *ServiceError) Error() string {
 	return s.Message
 }
+
+type Page struct {
+	PageIndex int         `json:"pageIndex"`
+	PageSize  int         `json:"pageSize"`
+	Total     int         `json:"total"`
+	Items     interface{} `json:"items"`
+}
